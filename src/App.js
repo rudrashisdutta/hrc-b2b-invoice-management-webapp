@@ -1,4 +1,5 @@
 import './App.css';
+import ControlPanel from './components/ControlPanel/ControlPanel';
 import Header from './components/Header/Header'
 
 function App() {
@@ -6,6 +7,7 @@ function App() {
     <div className="App">
       <header className="App-header">
       <Header />
+      <ControlPanel/>
       </header>
       <footer>
 
