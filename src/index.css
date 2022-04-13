@@ -1,4 +1,9 @@
 body {
+  background-color: #282c34;
+  min-width: 100%;
+  max-width:fit-content;
+  min-height: 100%;
+  max-height: fit-content;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',

@@ -1,26 +1,54 @@
 .header{
     display: grid;
-    grid-template-columns:repeat(3,1fr);
     padding: 0.5rem 1rem;
     height: fit-content
 }
 .hrcLogo{
-    display: flex;
+    display:flex;
     justify-content: center;
     align-items: center;
+    margin-top: 1rem;
+    position: absolute;
+    left: 50%;
+    -webkit-user-select: none;
+    user-select: none;
 }
-.companyName{
+.header .companyName{
     display: flex;
     align-items: center;
+    margin-top: 1rem;
+    margin-left: 1rem;
 }
-.companyName img{
-    margin-right: 20px;
-    transform: scale(1.3)
+.header .companyName img{
+    margin-right: 1rem;
+    transform: scale(1.3);
+    -webkit-user-select: none;
+    user-select: none;
 }
-.companyName span{
+.header .companyName span{
     color: #FFF;
     font-size: 23px;
     font-weight: 500;
+    -webkit-user-select: none;
+    user-select: none;
+}
+.heading {
+    display:flex;
+    justify-content: center;
+    margin-top: .4rem;
+    margin-left: 1rem;
+    margin-bottom: 1rem;
+    border: .1rem solid #1976d2;
+    border-radius: .5rem;
+}
+.heading p {
+    font-size: 1.2em;
+    padding: 0;
+    margin: 0;
+    border: 0;
+    color: #1976d2;
+    -webkit-user-select: none;
+    user-select: none;
 }
 .AppLogo {
     pointer-events: none;
@@ -37,4 +65,4 @@
     to {
       transform: rotate(360deg);
     }
-} 
+}

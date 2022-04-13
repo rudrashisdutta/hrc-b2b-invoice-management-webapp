@@ -7,7 +7,7 @@ class Header extends PureComponent {
     render() {
         return (
             <div>
-                <section className='header'>
+                <div className='header'>
                     <div className='companyName'>
                         <a href='/'>
                             <img src={companyLogo} className='AppLogo' alt='Company Logo'/>
@@ -19,11 +19,10 @@ class Header extends PureComponent {
                             <img src={HRCLogo} alt='Highradius Logo'/>
                         </a>
                     </div>
-                    <br/>
-                    <div className='companyName'>
-                        <p><u>Invoice List</u></p>
+                    <div className='heading'>
+                        <p>INVOICE LIST</p>
                     </div>
-                </section>
+                </div>
             </div>
         );
     }

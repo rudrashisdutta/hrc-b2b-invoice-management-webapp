@@ -1,3 +1,15 @@
 .controlPanel {
-    
+    background-color: #282c34;
+}
+.controlPanel .refresh {
+    display:grid;
+}
+.controlPanel .viewControl {
+    display:grid;
+}
+.controlPanel .search {
+    display:grid;
+}
+.controlPanel .alterControl {
+    display:grid;
 }

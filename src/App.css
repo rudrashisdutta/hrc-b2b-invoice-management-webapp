@@ -1,11 +1,11 @@
 .App {
   background-color: #282c34;
   min-width: 100%;
-  max-width: max-content;
+  max-width:fit-content;
   min-height: 100%;
-  max-height: max-content;
+  max-height: fit-content;
 }
-.App-header {
+.App .head {
   min-height: 100vh;
   color: white;
 }
