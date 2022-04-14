@@ -26,11 +26,13 @@ function TableView(props) {
         headerGroups,
         prepareRow,
         page,
+        row,
         nextPage,
         previousPage,
         canPreviousPage,
         canNextPage,
         pageOptions,
+        rowCount,
         state,
         gotoPage,
         pageCount,
@@ -42,7 +44,6 @@ function TableView(props) {
       }, useSortBy, usePagination)
 
       const {pageIndex} = state
-      tableState = useState(pageIndex);
 
     return (
         <div className='tableView' align="center">
@@ -52,6 +53,9 @@ function TableView(props) {
                     <TableHead>
                     {headerGroups.map(headerGroup => (
                         <TableRow className='tableHead' {...headerGroup.getHeaderGroupProps()}>
+                        <TableCell className="tableCell">
+                            <Checkbox id="checkAll" color="primary"/>
+                        </TableCell>
                         {headerGroup.headers.map(column => (
                             <TableCell className='tableCell' {...column.getHeaderProps(column.getSortByToggleProps())}>{
                                 column.render('Header')}
@@ -69,7 +73,10 @@ function TableView(props) {
                     {page.map(row => {
                         prepareRow(row)
                         return (
-                        <TableRow className='tableRow' {...row.getRowProps()}>
+                        <TableRow className='tableRow' id={row.sl_no} {...row.getRowProps()}>
+                            <TableCell className="tableCell">
+                                <Checkbox id={row.sl_no} />
+                            </TableCell>
                             {row.cells.map(cell => {
                             return <TableCell className='tableCell' {...cell.getCellProps()}>{cell.render('Cell')}</TableCell>
                             })}
