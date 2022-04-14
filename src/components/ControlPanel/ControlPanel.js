@@ -21,7 +21,7 @@ class ControlPanel extends Component {
                         <Search name='CUSTOMER ID'/>
                     </div>
                     <div className='alterControl'>
-                        <AlterControlButtons/>
+                        <AlterControlButtons selectedFlatRows={this.props.selectedFlatRows}/>
                     </div>
                 </div>
             </div>

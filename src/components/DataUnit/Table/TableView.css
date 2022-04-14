@@ -22,6 +22,9 @@
 .tableView .tableContainer .tableRow {
 
 }
+.tableView .tableContainer .tableRow::selection {
+  background-color: #1976d2;
+}
 .tableView .tableContainer .tableHead .tableCell{
   color: #1976d2;
 }

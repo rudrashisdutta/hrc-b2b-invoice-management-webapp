@@ -1,22 +1,33 @@
-import React, { PureComponent } from 'react';
-import PropTypes from 'prop-types';
+import React, { useState } from 'react';
 import './Control.css'
-import {Button, ButtonGroup} from '@mui/material';
+import {Button, ButtonGroup, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle} from '@mui/material';
+import { useAsyncDebounce } from 'react-table'
 
-class AlterControlButtons extends PureComponent {
-    render() {
-        return (
+function setSlNos(arr){
+    let str = ""
+    for(let i=0;i<arr.length;i++){
+        str = str + "sl_nos=" + arr[i];
+        if(i<arr.length-1){
+            str = str + "&";
+        }
+    }
+    return str;
+}
+var AlterControlButtons = (props) => {
+    const [selectedFlatRows, setSelectedFlatRows] = useState(props.selectedFlatRows);
+    var deleteData = (e) => {
+        alert("You are deleting some data!")
+        console.log(selectedFlatRows)
+    }
+    return (
+            <>
             <ButtonGroup size="large" aria-label="large button group" className='alter control'>
                 <Button size='large' id='add-button' variant="outlined">ADD</Button>
                 <Button size='large' id='edit-button' className='middleButton' variant="outlined">EDIT</Button>
-                <Button size='large' id='delete-button' variant="outlined">DELETE</Button>
+                <Button size='large' id='delete-button' variant="outlined" onClick={deleteData}>DELETE</Button>
             </ButtonGroup>
+            </>
         );
     }
-}
-
-AlterControlButtons.propTypes = {
-
-};
 
 export default AlterControlButtons;

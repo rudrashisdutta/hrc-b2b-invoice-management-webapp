@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useEffect, useState, useMemo } from 'react';
-import { useTable, usePagination, useSortBy } from 'react-table'
+import { useTable, usePagination, useSortBy, useRowSelect } from 'react-table'
 import './TableView.css'
 import COLUMNS from '../../../utils/Columns'
 import { Checkbox, TableContainer, Table, TableBody, TableCell, TableHead, TableRow, Button, ButtonGroup, TextField } from '@mui/material';
@@ -36,26 +36,39 @@ function TableView(props) {
         state,
         gotoPage,
         pageCount,
-        setPageSize
+        setPageSize,
+        selectedFlatRows
       } = useTable({
         columns,
         data,
         initialState: { pageSize: 10 }
-      }, useSortBy, usePagination)
+      }, useSortBy, usePagination, useRowSelect, (hooks) => {
+          hooks.visibleColumns.push((columns) => {
+              return [
+                  {
+                      accessor: "selection",
+                      Header: ({ getToggleAllRowsSelectedProps}) => (
+                          <Checkbox {...getToggleAllRowsSelectedProps()} />
+                      ),
+                      Cell: ({row}) => (
+                          <Checkbox {...row.getToggleRowSelectedProps()} />
+                      ),
+                      disableSortBy: true
+                  }, ...columns
+              ]
+          })
+      })
 
       const {pageIndex} = state
 
     return (
         <div className='tableView' align="center">
-            <ControlPanel />
+            <ControlPanel selectedFlatRows={selectedFlatRows}/>
             <TableContainer className='tableContainer'>
                 <Table stickyHeader className='table' aria-label="sticky table" {...getTableProps()}>
                     <TableHead>
                     {headerGroups.map(headerGroup => (
                         <TableRow className='tableHead' {...headerGroup.getHeaderGroupProps()}>
-                        <TableCell className="tableCell">
-                            <Checkbox id="checkAll" color="primary"/>
-                        </TableCell>
                         {headerGroup.headers.map(column => (
                             <TableCell className='tableCell' {...column.getHeaderProps(column.getSortByToggleProps())}>{
                                 column.render('Header')}
@@ -74,9 +87,6 @@ function TableView(props) {
                         prepareRow(row)
                         return (
                         <TableRow className='tableRow' id={row.sl_no} {...row.getRowProps()}>
-                            <TableCell className="tableCell">
-                                <Checkbox id={row.sl_no} />
-                            </TableCell>
                             {row.cells.map(cell => {
                             return <TableCell className='tableCell' {...cell.getCellProps()}>{cell.render('Cell')}</TableCell>
                             })}
