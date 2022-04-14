@@ -9,7 +9,7 @@ class Search extends Component {
     render() {
         return (
             <div className='control'>
-                <TextField id="search" type='number' label="Search CUSTOMER ID" variant="outlined" onChange={this.onSearchIDChange}/>
+                <TextField id="search" type='number' label={'SEARCH ' + this.props.name} variant="outlined" onChange={this.onSearchIDChange}/>
             </div>
         );
     }

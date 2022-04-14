@@ -6,6 +6,7 @@ import Search from './Control/Search';
 import AlterControlButtons from './Control/AlterControlButtons';
 
 class ControlPanel extends Component {
+    
     render() {
         return (
             <div className='controlPanelParent'>
@@ -17,7 +18,7 @@ class ControlPanel extends Component {
                         <Refresh/>
                     </div>
                     <div className='search'>
-                        <Search/>
+                        <Search name='CUSTOMER ID'/>
                     </div>
                     <div className='alterControl'>
                         <AlterControlButtons/>

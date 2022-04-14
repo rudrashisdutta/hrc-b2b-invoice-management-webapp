@@ -9,10 +9,11 @@
   overflow-x: scroll;
   overflow-y: scroll;
   height: 25rem;
-  width: 95%;
+  max-width: 98%;
   justify-content: center;
   margin-left: 1rem;
   margin-right: 1rem;
+  margin-top: 3rem;
 }
 .tableView .tableContainer .table {
   display: block;
@@ -44,7 +45,7 @@
 
 .tableView .tableFunctions {
   display: block;
-  margin-top: 1.5rem;
+  margin-top: 2rem;
 }
 .tableView .tableFunctions .Button{
     padding: 10px;
