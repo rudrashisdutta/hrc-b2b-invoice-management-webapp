@@ -1,5 +1,6 @@
 import './App.css';
 import ControlPanel from './components/ControlPanel/ControlPanel';
+import DataUnit from './components/DataUnit/DataUnit';
 import Header from './components/Header/Header'
 
 function App() {
@@ -7,7 +8,7 @@ function App() {
     <div className="App">
       <header className="head">
       <Header />
-      <ControlPanel/>
+      <DataUnit/>
       </header>
       <footer>
 

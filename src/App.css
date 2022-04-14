@@ -6,8 +6,9 @@
   max-height: fit-content;
 }
 .App .head {
-  min-height: 100vh;
   color: white;
+  display: block;
+  width: max-content;
 }
 
 .App-link {

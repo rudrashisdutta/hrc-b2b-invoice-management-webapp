@@ -30,6 +30,7 @@ div {
 .control #search {
     background-color: #1976d2b8;
     border-radius: .5rem;
+    width: 100%;
 }
 .control #search:focus {
     background-color: unset;

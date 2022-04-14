@@ -1,0 +1,79 @@
+.tableView {
+    display:contents;
+    color: #ffffff;
+    justify-content: center;
+    -webkit-user-select: none;
+    user-select: none;
+}
+.tableView .tableContainer {
+  overflow-x: scroll;
+  overflow-y: scroll;
+  height: 25rem;
+  width: 95%;
+  justify-content: center;
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+.tableView .tableContainer .table {
+  display: block;
+  white-space: nowrap;
+}
+.tableView .tableContainer .tableRow {
+
+}
+.tableView .tableContainer .tableHead .tableCell{
+  color: #1976d2;
+}
+.tableView .tableContainer .tableRow:nth-child(even) {
+  background-color: #2e3138;
+}
+.tableView .tableContainer .tableRow:nth-child(odd) {
+  background-color: #282e3a;
+}
+.tableView .tableContainer .tableRow:hover {
+  background-color: #282c34;
+}
+.tableView .tableContainer .tableRow .tableCell {
+  color: white;
+}
+.tableView .tableContainer .tableCell {
+  flex: 1;
+  white-space: nowrap;
+  text-align: center;
+}
+
+.tableView .tableFunctions {
+  display: block;
+  margin-top: 1.5rem;
+}
+.tableView .tableFunctions .Button{
+    padding: 10px;
+    flex: 1;
+    white-space: nowrap;
+    text-align: center;
+    border-radius: 2rem;
+    font-size: 1em;
+}
+.tableView .tableFunctions .message {
+
+}
+.tableView .tableFunctions .message #pgno {
+  background-color: #1976d2b8;
+  border-radius: .5rem;
+  text-align: center;
+}
+.tableView .tableFunctions .message #pgno::-webkit-inner-spin-button, 
+.tableView .tableFunctions .message #pgno::-webkit-outer-spin-button {
+    appearance: none;
+}
+.tableView .tableFunctions .message #pgno:focus {
+  background-color: unset;
+  border-radius: .5rem;
+  color: white;
+  -webkit-user-select: text;
+  user-select: text;
+}
+.tableView .tableFunctions .Button:disabled{
+  color: #363636;
+  background-color: #1976d259;
+}

@@ -1,3 +1,7 @@
+.controlPanelParent {
+    display: block;
+    width: 100%;
+}
 .controlPanel {
     background-color: #282c34;
 }
