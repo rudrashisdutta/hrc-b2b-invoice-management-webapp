@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import './Control.css'
 import {Button, ButtonGroup, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle} from '@mui/material';
-import { useAsyncDebounce } from 'react-table'
 
 function setSlNos(arr){
     let str = ""
@@ -13,11 +12,9 @@ function setSlNos(arr){
     }
     return str;
 }
-var AlterControlButtons = (props) => {
-    const [selectedFlatRows, setSelectedFlatRows] = useState(props.selectedFlatRows);
+function AlterControlButtons(props) {
     var deleteData = (e) => {
         alert("You are deleting some data!")
-        console.log(selectedFlatRows)
     }
     return (
             <>

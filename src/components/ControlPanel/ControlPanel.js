@@ -5,28 +5,23 @@ import ViewControlButtons from './Control/ViewControlButtons';
 import Search from './Control/Search';
 import AlterControlButtons from './Control/AlterControlButtons';
 
-class ControlPanel extends Component {
-    
-    render() {
-        return (
-            <div className='controlPanelParent'>
-                <div className='controlPanel'>
-                    <div className='viewControl'>
-                        <ViewControlButtons/>
-                    </div>
-                    <div className='refresh'>
-                        <Refresh/>
-                    </div>
-                    <div className='search'>
-                        <Search name='CUSTOMER ID'/>
-                    </div>
-                    <div className='alterControl'>
-                        <AlterControlButtons selectedFlatRows={this.props.selectedFlatRows}/>
-                    </div>
+export default function ControlPanel(props) {
+    return (
+        <div className='controlPanelParent'>
+            <div className='controlPanel'>
+                <div className='viewControl'>
+                    <ViewControlButtons/>
+                </div>
+                <div className='refresh'>
+                    <Refresh/>
+                </div>
+                <div className='search'>
+                    <Search name='CUSTOMER ID'/>
+                </div>
+                <div className='alterControl'>
+                    <AlterControlButtons/>
                 </div>
             </div>
-        );
-    }
+        </div>
+    );
 }
-
-export default ControlPanel;

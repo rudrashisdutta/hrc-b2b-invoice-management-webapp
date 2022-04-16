@@ -1,18 +1,14 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import './Control.css'
 import {TextField} from '@mui/material';
 
-class Search extends Component {
-    onSearchIDChange = (e) => {
+export default function Search({name}) {
+    var onSearchIDChange = (e) => {
         
     }
-    render() {
-        return (
-            <div className='control'>
-                <TextField id="search" type='number' label={'SEARCH ' + this.props.name} variant="outlined" onChange={this.onSearchIDChange}/>
-            </div>
-        );
-    }
+    return (
+        <div className='control'>
+            <TextField id="search" type='number' label={'SEARCH ' + name} variant="outlined" onChange={onSearchIDChange}/>
+        </div>
+    );
 }
-
-export default Search;

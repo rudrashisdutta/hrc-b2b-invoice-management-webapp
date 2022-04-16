@@ -1,15 +1,16 @@
 import './DataUnit.css'
-import React, { Component } from 'react';
+import React, { useState } from 'react';
+import ControlPanel from '../ControlPanel/ControlPanel'
 import TableView from './Table/TableView';
 
-class DataUnit extends Component {
-    render() {
-        return (
-            <div className='dataUnit'>
-                <TableView id="data"/>
-            </div>
-        );
-    }
-}
+export default function DataUnit(props) {
 
-export default DataUnit;
+    
+
+    return (
+        <div className='dataUnit'>
+            <ControlPanel/>
+            <TableView id="data"/>
+        </div>
+    );
+}

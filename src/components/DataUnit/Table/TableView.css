@@ -81,6 +81,7 @@
   color: #363636;
   background-color: #1976d259;
 }
-.buttonGroup {
-  margin-top:1.5rem;
+.tableView .tableFunctions .alterPageButtonGroup {
+  margin-top:.1rem;
+  margin-bottom: 2rem;
 }

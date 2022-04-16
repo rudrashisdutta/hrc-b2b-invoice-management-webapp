@@ -1,23 +1,21 @@
-import React from 'react';
-import { useEffect, useState, useMemo } from 'react';
+import React, { useEffect, useState, useMemo } from 'react';
 import { useTable, usePagination, useSortBy, useRowSelect } from 'react-table'
 import './TableView.css'
 import COLUMNS from '../../../utils/Columns'
 import { Checkbox, TableContainer, Table, TableBody, TableCell, TableHead, TableRow, Button, ButtonGroup, TextField, Popper, Grow, Paper, MenuList, MenuItem, ClickAwayListener  } from '@mui/material';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
-import ControlPanel from '../../ControlPanel/ControlPanel'
 import axios from 'axios';
 
 TableView.propTypes = {
     
 };
-var tableState
 
-function TableView(props) {
+export default function TableView(props) {
     const [tableData, setTableData] = useState([]);
     useEffect(()=>{
         axios.get("http://localhost:8080/HRC_java/View").then(response => setTableData(response.data));
     },[])
+    
     const columns = useMemo(() => COLUMNS, [])
     const data = useMemo(() => tableData, [tableData])
     const {
@@ -37,7 +35,8 @@ function TableView(props) {
         gotoPage,
         pageCount,
         setPageSize,
-        selectedFlatRows
+        selectedFlatRows,
+        isRowSelected
       } = useTable({
         columns,
         data,
@@ -51,15 +50,18 @@ function TableView(props) {
                           <Checkbox {...getToggleAllRowsSelectedProps()} />
                       ),
                       Cell: ({row}) => (
-                          <Checkbox {...row.getToggleRowSelectedProps()} />
+                          <Checkbox {...row.getToggleRowSelectedProps()}/>
                       ),
                       disableSortBy: true
                   }, ...columns
               ]
           })
       })
+      
 
     const {pageIndex} = state
+
+    //Functionality for Button Group to select number of invoices to show per page
     const options = [10, 15, 30, 50, 100, 200]
     const anchorRef = React.useRef(null);
     const [selectedIndex, setSelectedIndex] = React.useState(0);
@@ -85,10 +87,10 @@ function TableView(props) {
     
         setOpen(false);
       };
+      //Functionality for Button Group to select number of invoices to show per page {END}
 
     return (
         <div className='tableView' align="center">
-            <ControlPanel selectedFlatRows={selectedFlatRows}/>
             <TableContainer className='tableContainer'>
                 <Table stickyHeader className='table' aria-label="sticky table" {...getTableProps()}>
                     <TableHead>
@@ -99,7 +101,7 @@ function TableView(props) {
                                 column.render('Header')}
                                 <span>
                                 {
-                                    column.isSorted ? '  ' + (column.isSortedDesc ? 'ᐁ' : 'ᐃ') : ''
+                                    column.isSorted ? ' ' + (column.isSortedDesc ? 'ᐁ' : 'ᐃ') : ''
                                 }
                                 </span>
                             </TableCell>
@@ -169,7 +171,7 @@ function TableView(props) {
                 )}
             </Popper>
             <br/><br/><br/>
-            <ButtonGroup size="large" aria-label="large button group" align="center" className=".buttonGroup">
+            <ButtonGroup size="large" aria-label="large button group" align="center" className="alterPageButtonGroup">
                 <Button className='Button' variant="outlined" onClick={() =>gotoPage(0)} disabled={!canPreviousPage}><b>ᐊᐊ</b></Button>
                 <Button className='Button' variant="outlined" onClick={previousPage} disabled={!canPreviousPage}><b>ᐊ</b></Button>
                 <span className='message'>
@@ -186,5 +188,3 @@ function TableView(props) {
         </div>
     );
 }
-
-export default TableView;
