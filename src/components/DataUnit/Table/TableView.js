@@ -6,11 +6,7 @@ import { Checkbox, TableContainer, Table, TableBody, TableCell, TableHead, Table
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import axios from 'axios';
 
-TableView.propTypes = {
-    
-};
-
-export default function TableView(props) {
+export default function TableView({setSelectedFlatRows, setIsOneRowSelected, setIsRowSelected, updateTable}) {
     const [tableData, setTableData] = useState([]);
     useEffect(()=>{
         axios.get("http://localhost:8080/HRC_java/View").then(response => setTableData(response.data));
@@ -35,8 +31,7 @@ export default function TableView(props) {
         gotoPage,
         pageCount,
         setPageSize,
-        selectedFlatRows,
-        isRowSelected
+        selectedFlatRows
       } = useTable({
         columns,
         data,
@@ -47,7 +42,7 @@ export default function TableView(props) {
                   {
                       accessor: "selection",
                       Header: ({ getToggleAllRowsSelectedProps}) => (
-                          <Checkbox {...getToggleAllRowsSelectedProps()} />
+                          <Checkbox {...getToggleAllRowsSelectedProps()}/>
                       ),
                       Cell: ({row}) => (
                           <Checkbox {...row.getToggleRowSelectedProps()}/>
@@ -57,7 +52,19 @@ export default function TableView(props) {
               ]
           })
       })
+
+      useEffect(() => {
+        try {
+            setSelectedFlatRows(selectedFlatRows);
+            setIsOneRowSelected(selectedFlatRows.length === 1 ? true : false);
+            setIsRowSelected(selectedFlatRows.length > 0 && selectedFlatRows.length < 40 ? true : false);
+        } catch (error) {
+            console.error(error);
+        }
+      });
       
+    
+
 
     const {pageIndex} = state
 
