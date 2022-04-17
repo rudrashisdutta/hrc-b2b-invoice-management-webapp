@@ -11,8 +11,8 @@ function AlterControlButtons({selectedFlatRows, isOneRowSelected, isRowSelected}
     axios.defaults.headers.post['Access-Control-Allow-Methods'] = '*';
     var getSlNos = (selectedFlatRows) => {
         let slnos = "";
-        selectedFlatRows.map((element) => {
-            slnos += (Object.values(element)[0]) + "-"
+        selectedFlatRows.map((row) => {
+            slnos += (row.values['slNo']) + "-"
             return null;
         })
         slnos = slnos.slice(0, -1);
@@ -21,8 +21,9 @@ function AlterControlButtons({selectedFlatRows, isOneRowSelected, isRowSelected}
     var deleteData = (e) => {
         alert("You are deleting some data!")
         let slNos = getSlNos(selectedFlatRows);
+        setResponse(slNos);
         axios.get("http://localhost:8080/HRC_java/Delete?slnos=" + slNos).then(response => setResponse(response.data));
-        console.log(response)
+        alert(response ? "Successfully Deleted" : "Failed to delete!");
     }
     var editData = (e) => {
         alert("You are edit a data!")
