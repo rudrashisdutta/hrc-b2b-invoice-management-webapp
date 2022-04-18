@@ -3,17 +3,21 @@ import './Control.css'
 import {Button, ButtonGroup} from '@mui/material';
 import axios from 'axios';
 import DeleteInvoiceDialogBox from '../../DialogBoxes/DeleteInvoiceDialogBox';
+import EditInvoiceDialogBox from '../../DialogBoxes/EditInvoiceDialogBox';
 
 function AlterControlButtons({selectedFlatRows, isOneRowSelected, isRowSelected}) {
-    const [invoiceIDs, setInvoiceIDs] = useState("");
-    const [slNos, setSlNos] = useState("");
-    const [openDeleteInvoiceConfirmationDialog, setOpenDeleteInvoiceConfirmationDialog] = React.useState(false);
+    const [invoiceIDs, setInvoiceIDs] = useState(null);
+    const [slNos, setSlNos] = useState(null);
+    const [invoiceCurrency, setInvoiceCurrency] = useState(null);
+    const [customerPaymentTerms, setCustomerPaymentTerms] = useState(null);
+    const [openDeleteInvoiceConfirmationDialog, setOpenDeleteInvoiceConfirmationDialog] = useState(false);
+    const [openEditInvoiceConfirmationDialog, setOpenEditInvoiceConfirmationDialog] = useState(false);
 
     axios.defaults.baseURL = 'http://localhost:8080/HRC_java/';
     axios.defaults.headers.post['Content-Type'] ='application/json;charset=utf-8';
     axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
     axios.defaults.headers.post['Access-Control-Allow-Methods'] = '*';
-    var getSlNos = (selectedFlatRows) => {
+    var getInvoiceInfo = (selectedFlatRows) => {
         let slnos = "";
         let invoices = "";
         selectedFlatRows.map((row) => {
@@ -26,15 +30,24 @@ function AlterControlButtons({selectedFlatRows, isOneRowSelected, isRowSelected}
         setInvoiceIDs(invoices);
         setSlNos(slnos);
     }
+    var getEditableProperties = (selectedFlatRows) => {
+        getInvoiceInfo(selectedFlatRows)
+        selectedFlatRows.map((row) => {
+            setInvoiceCurrency(row.values['invoiceCurrency']);
+            setCustomerPaymentTerms(row.values['custPaymentTerms']);
+            return null;
+        })
+    }
     var addData = (e) => {
 
     }
     var deleteData = (e) => {
         setOpenDeleteInvoiceConfirmationDialog(true)
-        getSlNos(selectedFlatRows);
+        getInvoiceInfo(selectedFlatRows);
     }
     var editData = (e) => {
-        alert("You are editing a data!")
+        getEditableProperties(selectedFlatRows)
+        setOpenEditInvoiceConfirmationDialog(true);
     }
     return (
             <>
@@ -43,6 +56,7 @@ function AlterControlButtons({selectedFlatRows, isOneRowSelected, isRowSelected}
                 <Button size='large' id='edit-button' className='middleButton' variant="outlined" onClick={editData} disabled={!isOneRowSelected}>EDIT</Button>
                 <Button size='large' id='delete-button' variant="outlined" onClick={deleteData} disabled={!isRowSelected} >DELETE</Button>
                 {isRowSelected && openDeleteInvoiceConfirmationDialog && <DeleteInvoiceDialogBox invoiceIDs={invoiceIDs} slNos={slNos} openDeleteInvoiceConfirmationDialog={openDeleteInvoiceConfirmationDialog} setOpenDeleteInvoiceConfirmationDialog={setOpenDeleteInvoiceConfirmationDialog} />}
+                {isOneRowSelected && openEditInvoiceConfirmationDialog && <EditInvoiceDialogBox invoiceID={invoiceIDs} slNo={slNos} invoiceCurrency={invoiceCurrency} customerPaymentTerms={customerPaymentTerms} openEditInvoiceConfirmationDialog={openEditInvoiceConfirmationDialog} setOpenEditInvoiceConfirmationDialog={setOpenEditInvoiceConfirmationDialog} />}
             </ButtonGroup>
             </>
         );

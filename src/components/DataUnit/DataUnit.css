@@ -1,4 +1,10 @@
 .dataUnit {
     display:grid;
     justify-content: center;
+    background-color: #1d2128;
+    border-radius: 2rem;
+    padding: 1rem;
+    padding-bottom: 0rem;
+    margin: 3rem;
+    margin-top: .5rem;
 }

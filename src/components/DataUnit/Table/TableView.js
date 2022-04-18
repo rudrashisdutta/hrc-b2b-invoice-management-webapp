@@ -45,7 +45,7 @@ export default function TableView({setSelectedFlatRows, setIsOneRowSelected, set
                           <Checkbox {...getToggleAllRowsSelectedProps()}/>
                       ),
                       Cell: ({row}) => (
-                          <Checkbox {...row.getToggleRowSelectedProps()}/>
+                          <Checkbox {...row.getToggleRowSelectedProps()} color="primary"/>
                       ),
                       disableSortBy: true
                   }, ...columns

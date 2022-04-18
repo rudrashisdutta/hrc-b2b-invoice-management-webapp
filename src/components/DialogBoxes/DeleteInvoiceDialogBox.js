@@ -8,7 +8,7 @@ import axios from 'axios';
 export default function DeleteInvoiceDialogBox({invoiceIDs, slNos, openDeleteInvoiceConfirmationDialog, setOpenDeleteInvoiceConfirmationDialog}) {
     const theme = useTheme();
     const fullScreen = useMediaQuery(theme.breakpoints.down('md'));
-    const [result, setResult] = useState("0");
+    const [result, setResult] = useState(0);
     axios.defaults.baseURL = 'http://localhost:8080/HRC_java/';
     axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
     axios.defaults.headers.post['Access-Control-Allow-Methods'] = '*';

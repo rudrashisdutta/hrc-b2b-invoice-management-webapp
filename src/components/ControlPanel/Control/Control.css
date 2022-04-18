@@ -20,7 +20,7 @@ div {
     border-radius: .5rem;
 }
 .control Button:disabled {
-    color: #252424;
+    color: #1e1d1d;
     background-color: #1976d259;
 }
 .control .middleButton {

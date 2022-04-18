@@ -14,25 +14,43 @@
   margin-left: 1rem;
   margin-right: 1rem;
   margin-top: 3rem;
+  border-radius: 3rem;
+}
+.tableView .tableContainer::-webkit-scrollbar {
+  width: 0rem;
+  height: .8rem;
+}
+.tableView .tableContainer::-webkit-scrollbar-thumb{
+  background-color: #1976d258;
+}
+.tableView .tableContainer::-webkit-scrollbar-thumb:hover{
+  background-color: #1976d2af;
+}
+.tableView .tableContainer::-webkit-scrollbar-thumb:active{
+  background-color: #1976d2;
+}
+.tableView .tableContainer::-webkit-scrollbar-corner{
+  background-color: #1976d200;
 }
 .tableView .tableContainer .table {
   display: block;
   white-space: nowrap;
 }
 .tableView .tableContainer .tableRow {
-
+  border-radius: 1rem;
 }
 .tableView .tableContainer .tableRow::selection {
   background-color: #1976d2;
 }
 .tableView .tableContainer .tableHead .tableCell{
+  background-color: #282c34;
   color: #1976d2;
 }
 .tableView .tableContainer .tableRow:nth-child(even) {
-  background-color: #2e3138;
+  background-color: #333b49;
 }
 .tableView .tableContainer .tableRow:nth-child(odd) {
-  background-color: #282e3a;
+  background-color: #1b1d21;
 }
 .tableView .tableContainer .tableRow:hover {
   background-color: #282c34;
@@ -58,9 +76,6 @@
     border-radius: 2rem;
     font-size: 1em;
 }
-.tableView .tableFunctions .message {
-
-}
 .tableView .tableFunctions .message #pgno {
   background-color: #1976d2b8;
   border-radius: .5rem;
@@ -78,7 +93,7 @@
   user-select: text;
 }
 .tableView .tableFunctions .Button:disabled{
-  color: #363636;
+  color: #1e1d1d;
   background-color: #1976d259;
 }
 .tableView .tableFunctions .alterPageButtonGroup {

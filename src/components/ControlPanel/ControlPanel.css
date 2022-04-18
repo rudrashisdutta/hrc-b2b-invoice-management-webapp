@@ -3,7 +3,6 @@
     width: 100%;
 }
 .controlPanel {
-    background-color: #282c34;
 }
 .controlPanel .refresh {
     display:grid;

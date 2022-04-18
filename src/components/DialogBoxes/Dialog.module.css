@@ -1,3 +1,7 @@
+.dialogContainer {
+    -webkit-user-select: none;
+    user-select: none;
+}
 .dialog {
     justify-content: center;
     background-color: #282c34b1;
@@ -9,4 +13,16 @@
 }
 .dialog .dialogContent .dialogContentText {
     color: #1976d2;
+}
+.edit {
+    background-color: #ffffff00;
+    border-radius: .5rem;
+    color: white;
+    -webkit-user-select: text;
+    user-select: text;
+    margin: 1rem;
+}
+.textField {
+    background-color: #ffffff38;
+    color: white;
 }
