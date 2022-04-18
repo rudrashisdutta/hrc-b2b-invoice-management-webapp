@@ -9,25 +9,32 @@
   overflow-x: scroll;
   overflow-y: scroll;
   height: 25rem;
-  max-width: 98%;
   justify-content: center;
-  margin-left: 1rem;
-  margin-right: 1rem;
   margin-top: 3rem;
-  border-radius: 3rem;
+  border-radius: 2rem;
 }
 .tableView .tableContainer::-webkit-scrollbar {
   width: 0rem;
-  height: .8rem;
+  height: 1.6rem;
+  border-radius: 3rem;
+}
+.tableView .tableContainer::-webkit-scrollbar:hover {
+  background-color: #333b4922;
+}
+.tableView .tableContainer::-webkit-scrollbar:active{
+  height: 1rem;
+  background-color: #333b495a;
 }
 .tableView .tableContainer::-webkit-scrollbar-thumb{
-  background-color: #1976d258;
+  background-color: #1976d245;
 }
 .tableView .tableContainer::-webkit-scrollbar-thumb:hover{
-  background-color: #1976d2af;
+  background-color: #1976d291;
+  border-radius: .6rem;
 }
 .tableView .tableContainer::-webkit-scrollbar-thumb:active{
-  background-color: #1976d2;
+  background-color: #1976d2cf;
+  border-radius: .8rem;
 }
 .tableView .tableContainer::-webkit-scrollbar-corner{
   background-color: #1976d200;
@@ -47,13 +54,13 @@
   color: #1976d2;
 }
 .tableView .tableContainer .tableRow:nth-child(even) {
-  background-color: #333b49;
+  background-color: #2c3037;
 }
 .tableView .tableContainer .tableRow:nth-child(odd) {
-  background-color: #1b1d21;
+  background-color: #282f3b;
 }
 .tableView .tableContainer .tableRow:hover {
-  background-color: #282c34;
+  background-color: #24272f;
 }
 .tableView .tableContainer .tableRow .tableCell {
   color: white;

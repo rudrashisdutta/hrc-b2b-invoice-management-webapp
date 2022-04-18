@@ -19,8 +19,20 @@ export default function EditInvoiceDialogBox({invoiceID, slNo, invoiceCurrency, 
     };
     const handleClosePositive = (e) => {
         handleClose()
-        // axios.get("http://localhost:8080/HRC_java/Edit?slno=" + slNo + "&invoicecurrency=" + invoiceCurrency + "&customerpaymentterms=" + customerPaymentTerms).then(response => setResult(response.data));
-        // if (result === 1) {window.location.reload(true)}
+        axios.get("http://localhost:8080/HRC_java/Edit?slno=" + slNo + "&invoicecurrency=" + newInvoiceCurrency + "&customerpaymentterm=" + newCustomerPaymentTerms).then(response => setResult(response.data));
+        window.location.reload(true)
+    }
+    const onInvoiceCurrencyTextChange = (e) => {
+        const re = /^[A-Za-z]+$/;
+        if (e.target.value === "" || re.test(e.target.value)) {
+            setInvoiceNewCurrency(e.target.value);
+        }
+    }
+    const onCustomerPaymentTermsTextChange = (e) => {
+        const re = /^[A-Za-z0-9]+$/;
+        if (e.target.value === "" || re.test(e.target.value)) {
+            setNewCustomerPaymentTerms(e.target.value);
+        }
     }
 
     return (
@@ -47,14 +59,18 @@ export default function EditInvoiceDialogBox({invoiceID, slNo, invoiceCurrency, 
                     id="edit-invoice-currency"
                     label={"INVOICE CURRENCY:"}
                     defaultValue={invoiceCurrency}
+                    value={newInvoiceCurrency}
                     className={css.textField}
+                    onChange={onInvoiceCurrencyTextChange}
                 />
                 <TextField
                     required
                     id="edit-customer-payment-terms"
                     label={"CUSTOMER PAYMENT TERMS:"}
                     defaultValue={customerPaymentTerms}
+                    value={newCustomerPaymentTerms}
                     className={css.textField}
+                    onChange={onCustomerPaymentTermsTextChange}
                 />
                 </div>
                 </DialogContent>

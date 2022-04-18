@@ -17,23 +17,17 @@ code {
     monospace;
 }
 ::-webkit-scrollbar {
-  width: .8rem;
+  width: 0rem;
   height: .8rem;
   margin: .5rem;
 }
-
-/* Track */
 ::-webkit-scrollbar-track {
   background: #f1f1f100;
 }
-
-/* Handle */
 ::-webkit-scrollbar-thumb {
   background: #ffffff41;
   border-radius: 1rem;
 }
-
-/* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: #ffffff90;
 }

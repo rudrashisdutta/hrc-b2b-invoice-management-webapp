@@ -18,7 +18,7 @@ export default function DeleteInvoiceDialogBox({invoiceIDs, slNos, openDeleteInv
     const handleClosePositive = (e) => {
         handleClose()
         axios.get("http://localhost:8080/HRC_java/Delete?slnos=" + slNos).then(response => setResult(response.data));
-        if (result === 1) {window.location.reload(true)}
+        window.location.reload(true)
     }
 
     return (

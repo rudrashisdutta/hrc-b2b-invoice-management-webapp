@@ -44,6 +44,9 @@
 .heading p {
     font-size: 1.2em;
     padding: 0;
+    padding-left: .5rem;
+    padding-right: .5rem;
+    justify-self: center;
     margin: 0;
     border: 0;
     color: #1976d2;

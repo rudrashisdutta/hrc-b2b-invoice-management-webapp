@@ -11,7 +11,7 @@ export default function Header(props) {
                     <a href='/'>
                         <img src={companyLogo} className='AppLogo' alt='Company Logo'/>
                     </a>
-                    <span>SB Company</span>
+                    <span>RD</span>
                 </div>
                 <div className='hrcLogo'>
                     <a href='/'>

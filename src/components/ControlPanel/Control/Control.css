@@ -19,6 +19,9 @@ div {
     text-align: center;
     border-radius: .5rem;
 }
+.control Button:hover {
+    background-color: #282c34;
+}
 .control Button:disabled {
     color: #1e1d1d;
     background-color: #1976d259;
@@ -38,7 +41,7 @@ div {
 }
 .control #search:focus {
     background-color: unset;
-    border-radius: .5rem;
+    border-radius: .1rem;
     color: white;
     -webkit-user-select: text;
     user-select: text;
