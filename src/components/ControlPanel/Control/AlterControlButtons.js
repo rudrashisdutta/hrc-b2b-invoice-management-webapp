@@ -5,7 +5,7 @@ import axios from 'axios';
 import DeleteInvoiceDialogBox from '../../DialogBoxes/DeleteInvoiceDialogBox';
 import EditInvoiceDialogBox from '../../DialogBoxes/EditInvoiceDialogBox';
 
-function AlterControlButtons({selectedFlatRows, isOneRowSelected, isRowSelected}) {
+function AlterControlButtons({setTableData, selectedFlatRows, isOneRowSelected, isRowSelected}) {
     const [invoiceIDs, setInvoiceIDs] = useState(null);
     const [slNos, setSlNos] = useState(null);
     const [invoiceCurrency, setInvoiceCurrency] = useState(null);
@@ -55,8 +55,8 @@ function AlterControlButtons({selectedFlatRows, isOneRowSelected, isRowSelected}
                 <Button size='large' id='add-button' variant="outlined" onClick={addData}>ADD</Button>
                 <Button size='large' id='edit-button' className='middleButton' variant="outlined" onClick={editData} disabled={!isOneRowSelected}>EDIT</Button>
                 <Button size='large' id='delete-button' variant="outlined" onClick={deleteData} disabled={!isRowSelected} >DELETE</Button>
-                {isRowSelected && openDeleteInvoiceConfirmationDialog && <DeleteInvoiceDialogBox invoiceIDs={invoiceIDs} slNos={slNos} openDeleteInvoiceConfirmationDialog={openDeleteInvoiceConfirmationDialog} setOpenDeleteInvoiceConfirmationDialog={setOpenDeleteInvoiceConfirmationDialog} />}
-                {isOneRowSelected && openEditInvoiceConfirmationDialog && <EditInvoiceDialogBox invoiceID={invoiceIDs} slNo={slNos} invoiceCurrency={invoiceCurrency} customerPaymentTerms={customerPaymentTerms} openEditInvoiceConfirmationDialog={openEditInvoiceConfirmationDialog} setOpenEditInvoiceConfirmationDialog={setOpenEditInvoiceConfirmationDialog} />}
+                {isRowSelected && openDeleteInvoiceConfirmationDialog && <DeleteInvoiceDialogBox setTableData={setTableData} invoiceIDs={invoiceIDs} slNos={slNos} openDeleteInvoiceConfirmationDialog={openDeleteInvoiceConfirmationDialog} setOpenDeleteInvoiceConfirmationDialog={setOpenDeleteInvoiceConfirmationDialog} />}
+                {isOneRowSelected && openEditInvoiceConfirmationDialog && <EditInvoiceDialogBox setTableData={setTableData} invoiceID={invoiceIDs} slNo={slNos} invoiceCurrency={invoiceCurrency} customerPaymentTerms={customerPaymentTerms} openEditInvoiceConfirmationDialog={openEditInvoiceConfirmationDialog} setOpenEditInvoiceConfirmationDialog={setOpenEditInvoiceConfirmationDialog} />}
             </ButtonGroup>
             </>
         );

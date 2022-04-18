@@ -6,8 +6,7 @@ import { Checkbox, TableContainer, Table, TableBody, TableCell, TableHead, Table
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import axios from 'axios';
 
-export default function TableView({setSelectedFlatRows, setIsOneRowSelected, setIsRowSelected, updateTable}) {
-    const [tableData, setTableData] = useState([]);
+export default function TableView({tableData, setTableData, setSelectedFlatRows, setIsOneRowSelected, setIsRowSelected, updateTable}) {
     useEffect(()=>{
         axios.get("http://localhost:8080/HRC_java/View").then(response => setTableData(response.data));
     },[])

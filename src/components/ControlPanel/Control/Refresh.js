@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import './Control.css'
 import {Button, ButtonGroup} from '@mui/material';
+import axios from 'axios';
 
-export default function Refresh({updateTable, setUpdateTable}) {
+export default function Refresh({setTableData}) {
     var reloadData = () => {
-        window.location.reload(false);
+        setTableData([]);
+        axios.get("http://localhost:8080/HRC_java/View").then(response => setTableData(response.data));
     }
     return (
         <ButtonGroup size="large" aria-label="large button group" className='control'>

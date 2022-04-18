@@ -5,7 +5,7 @@ import useMediaQuery from '@mui/material/useMediaQuery';
 import css from './Dialog.module.css';
 import axios from 'axios';
 
-export default function DeleteInvoiceDialogBox({invoiceIDs, slNos, openDeleteInvoiceConfirmationDialog, setOpenDeleteInvoiceConfirmationDialog}) {
+export default function DeleteInvoiceDialogBox({setTableData, invoiceIDs, slNos, openDeleteInvoiceConfirmationDialog, setOpenDeleteInvoiceConfirmationDialog}) {
     const theme = useTheme();
     const fullScreen = useMediaQuery(theme.breakpoints.down('md'));
     const [result, setResult] = useState(0);
@@ -18,7 +18,8 @@ export default function DeleteInvoiceDialogBox({invoiceIDs, slNos, openDeleteInv
     const handleClosePositive = (e) => {
         handleClose()
         axios.get("http://localhost:8080/HRC_java/Delete?slnos=" + slNos).then(response => setResult(response.data));
-        window.location.reload(true)
+        setTableData([]);
+        setTimeout(() => {  axios.get("http://localhost:8080/HRC_java/View").then(response => setTableData(response.data)); }, 2000);
     }
 
     return (
