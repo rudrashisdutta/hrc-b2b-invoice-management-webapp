@@ -5,7 +5,7 @@ import ViewControlButtons from './Control/ViewControlButtons';
 import Search from './Control/Search';
 import AlterControlButtons from './Control/AlterControlButtons';
 
-export default function ControlPanel({selectedFlatRows, isOneRowSelected, isRowSelected, setUpdateTable}) {
+export default function ControlPanel({selectedFlatRows, isOneRowSelected, isRowSelected, updateTable, setUpdateTable}) {
     return (
         <div className='controlPanelParent'>
             <div className='controlPanel'>
@@ -13,13 +13,13 @@ export default function ControlPanel({selectedFlatRows, isOneRowSelected, isRowS
                     <ViewControlButtons/>
                 </div>
                 <div className='refresh'>
-                    <Refresh/>
+                    <Refresh setUpdateTable={setUpdateTable} updateTable={updateTable}/>
                 </div>
                 <div className='search'>
                     <Search name='CUSTOMER ID'/>
                 </div>
                 <div className='alterControl'>
-                    <AlterControlButtons selectedFlatRows={selectedFlatRows} isOneRowSelected={isOneRowSelected} isRowSelected={isRowSelected}/>
+                    <AlterControlButtons selectedFlatRows={selectedFlatRows} isOneRowSelected={isOneRowSelected} isRowSelected={isRowSelected} setUpdateTable={setUpdateTable}/>
                 </div>
             </div>
         </div>

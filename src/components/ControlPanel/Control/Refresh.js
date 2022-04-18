@@ -2,10 +2,9 @@ import React, { useState } from 'react';
 import './Control.css'
 import {Button, ButtonGroup} from '@mui/material';
 
-export default function Refresh(props) {
+export default function Refresh({updateTable, setUpdateTable}) {
     var reloadData = () => {
         window.location.reload(false);
-        console.log('reloaded!')
     }
     return (
         <ButtonGroup size="large" aria-label="large button group" className='control'>

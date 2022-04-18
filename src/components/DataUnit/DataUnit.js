@@ -14,7 +14,7 @@ export default function DataUnit(props) {
 
     return (
         <div className='dataUnit'>
-            <ControlPanel selectedFlatRows={selectedFlatRows} isOneRowSelected={isOneRowSelected} isRowSelected={isRowSelected} setUpdateTable={setUpdateTable}/>
+            <ControlPanel selectedFlatRows={selectedFlatRows} isOneRowSelected={isOneRowSelected} isRowSelected={isRowSelected} updateTable={updateTable} setUpdateTable={setUpdateTable}/>
             <TableView setSelectedFlatRows={setSelectedFlatRows} setIsOneRowSelected={setIsOneRowSelected} setIsRowSelected={setIsRowSelected} updateTable={updateTable}/>
         </div>
     );

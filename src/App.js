@@ -10,9 +10,6 @@ function App() {
       <Header />
       <DataUnit/>
       </header>
-      <footer>
-
-      </footer>
     </div>
   );
 }
