@@ -21,6 +21,9 @@
     -webkit-user-select: text;
     user-select: text;
     margin: 1rem;
+    display: grid;
+    grid-template-columns: 15rem 15rem 15rem 15rem;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
 }
 .textField {
     background-color: #ffffff38;

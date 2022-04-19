@@ -9,7 +9,7 @@ export default function EditInvoiceDialogBox({setTableData, invoiceID, slNo, inv
     const theme = useTheme();
     const fullScreen = useMediaQuery(theme.breakpoints.down('md'));
     const [result, setResult] = useState(0);
-    const [newInvoiceCurrency, setInvoiceNewCurrency] = useState(null);
+    const [newInvoiceCurrency, setNewInvoiceCurrency] = useState(null);
     const [newCustomerPaymentTerms, setNewCustomerPaymentTerms] = useState(null);
     axios.defaults.baseURL = 'http://localhost:8080/HRC_java/';
     axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
@@ -26,7 +26,7 @@ export default function EditInvoiceDialogBox({setTableData, invoiceID, slNo, inv
     const onInvoiceCurrencyTextChange = (e) => {
         const re = /^[A-Za-z]+$/;
         if (e.target.value === "" || re.test(e.target.value)) {
-            setInvoiceNewCurrency(e.target.value);
+            setNewInvoiceCurrency(e.target.value);
         }
     }
     const onCustomerPaymentTermsTextChange = (e) => {

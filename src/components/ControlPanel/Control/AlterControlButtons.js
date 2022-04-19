@@ -4,6 +4,7 @@ import {Button, ButtonGroup} from '@mui/material';
 import axios from 'axios';
 import DeleteInvoiceDialogBox from '../../DialogBoxes/DeleteInvoiceDialogBox';
 import EditInvoiceDialogBox from '../../DialogBoxes/EditInvoiceDialogBox';
+import AddInvoiceDialogBox from '../../DialogBoxes/AddInvoiceDialogBox';
 
 function AlterControlButtons({setTableData, selectedFlatRows, isOneRowSelected, isRowSelected}) {
     const [invoiceIDs, setInvoiceIDs] = useState(null);
@@ -12,6 +13,7 @@ function AlterControlButtons({setTableData, selectedFlatRows, isOneRowSelected, 
     const [customerPaymentTerms, setCustomerPaymentTerms] = useState(null);
     const [openDeleteInvoiceConfirmationDialog, setOpenDeleteInvoiceConfirmationDialog] = useState(false);
     const [openEditInvoiceConfirmationDialog, setOpenEditInvoiceConfirmationDialog] = useState(false);
+    const [openAddInvoiceConfirmationDialog, setOpenAddInvoiceConfirmationDialog] = useState(false);
 
     axios.defaults.baseURL = 'http://localhost:8080/HRC_java/';
     axios.defaults.headers.post['Content-Type'] ='application/json;charset=utf-8';
@@ -39,7 +41,8 @@ function AlterControlButtons({setTableData, selectedFlatRows, isOneRowSelected, 
         })
     }
     var addData = (e) => {
-
+        axios.get("http://localhost:8080/HRC_java/NewSlNo").then(response => setSlNos(response.data));
+        setOpenAddInvoiceConfirmationDialog(true);
     }
     var deleteData = (e) => {
         setOpenDeleteInvoiceConfirmationDialog(true)
@@ -57,6 +60,7 @@ function AlterControlButtons({setTableData, selectedFlatRows, isOneRowSelected, 
                 <Button size='large' id='delete-button' variant="outlined" onClick={deleteData} disabled={!isRowSelected} >DELETE</Button>
                 {isRowSelected && openDeleteInvoiceConfirmationDialog && <DeleteInvoiceDialogBox setTableData={setTableData} invoiceIDs={invoiceIDs} slNos={slNos} openDeleteInvoiceConfirmationDialog={openDeleteInvoiceConfirmationDialog} setOpenDeleteInvoiceConfirmationDialog={setOpenDeleteInvoiceConfirmationDialog} />}
                 {isOneRowSelected && openEditInvoiceConfirmationDialog && <EditInvoiceDialogBox setTableData={setTableData} invoiceID={invoiceIDs} slNo={slNos} invoiceCurrency={invoiceCurrency} customerPaymentTerms={customerPaymentTerms} openEditInvoiceConfirmationDialog={openEditInvoiceConfirmationDialog} setOpenEditInvoiceConfirmationDialog={setOpenEditInvoiceConfirmationDialog} />}
+                {openAddInvoiceConfirmationDialog && <AddInvoiceDialogBox setTableData={setTableData} slNo={slNos} openAddInvoiceConfirmationDialog={openAddInvoiceConfirmationDialog} setOpenAddInvoiceConfirmationDialog={setOpenAddInvoiceConfirmationDialog} />}
             </ButtonGroup>
             </>
         );
