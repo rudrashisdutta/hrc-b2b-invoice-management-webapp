@@ -248,7 +248,7 @@ export default function EditInvoiceDialogBox({setTableData, slNo, openAddInvoice
                     required
                     id="add-posting-id"
                     label={"POSTING ID:"}
-                    value={postingDate}
+                    value={postingID}
                     className={css.textField}
                     onChange={onPostingIDTextChange}
                 />
